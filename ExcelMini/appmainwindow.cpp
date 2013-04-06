@@ -12,3 +12,8 @@ AppMainWindow::~AppMainWindow()
 {
     delete ui;
 }
+
+void AppMainWindow::on_actionSalir_triggered()
+{
+    close();
+}
