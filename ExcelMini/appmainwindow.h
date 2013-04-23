@@ -15,10 +15,14 @@ public:
     explicit AppMainWindow(QWidget *parent = 0);
     ~AppMainWindow();
     
+public slots:
+    void on_enter_pressed();
+
 private slots:
     void on_actionSalir_triggered();
 
 private:
+    void connectSignals();
     Ui::AppMainWindow *ui;
 };
 

@@ -22,6 +22,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
@@ -42,10 +43,11 @@ public:
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QTableWidget *tableWidget;
+    QFrame *line;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
-    QLineEdit *lineEdit;
-    QFrame *line;
+    QLineEdit *line_functionEntry;
+    QPushButton *pushButton;
     QMenuBar *menuBar;
     QMenu *menuArchivo;
     QMenu *menuInsertar;
@@ -83,6 +85,13 @@ public:
 
         gridLayout->addWidget(tableWidget, 2, 0, 1, 1);
 
+        line = new QFrame(centralWidget);
+        line->setObjectName(QStringLiteral("line"));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        gridLayout->addWidget(line, 1, 0, 1, 1);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
@@ -91,20 +100,18 @@ public:
 
         horizontalLayout->addWidget(label);
 
-        lineEdit = new QLineEdit(centralWidget);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        line_functionEntry = new QLineEdit(centralWidget);
+        line_functionEntry->setObjectName(QStringLiteral("line_functionEntry"));
 
-        horizontalLayout->addWidget(lineEdit);
+        horizontalLayout->addWidget(line_functionEntry);
 
 
         gridLayout->addLayout(horizontalLayout, 0, 0, 1, 1);
 
-        line = new QFrame(centralWidget);
-        line->setObjectName(QStringLiteral("line"));
-        line->setFrameShape(QFrame::HLine);
-        line->setFrameShadow(QFrame::Sunken);
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
 
-        gridLayout->addWidget(line, 1, 0, 1, 1);
+        gridLayout->addWidget(pushButton, 0, 1, 1, 1);
 
         AppMainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(AppMainWindow);
@@ -153,6 +160,7 @@ public:
         actionP_gina->setText(QApplication::translate("AppMainWindow", "P\303\241gina", 0));
         actionAcerca_de->setText(QApplication::translate("AppMainWindow", "Acerca de...", 0));
         label->setText(QApplication::translate("AppMainWindow", "Celda:", 0));
+        pushButton->setText(QApplication::translate("AppMainWindow", "PushButton", 0));
         menuArchivo->setTitle(QApplication::translate("AppMainWindow", "Archivo", 0));
         menuInsertar->setTitle(QApplication::translate("AppMainWindow", "Insertar", 0));
         menuAyuda->setTitle(QApplication::translate("AppMainWindow", "Ayuda", 0));
